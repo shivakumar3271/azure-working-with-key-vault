@@ -25,7 +25,7 @@ namespace WorkingWithAzureKeyVault
                 Console.WriteLine("Demo by Avinash Seth <avinash.seth@outlook.com>");
                 AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
                 KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                var secret = await keyVaultClient.GetSecretAsync("")
+                var secret = await keyVaultClient.GetSecretAsync("https://<vault_name>.vault.azure.net/secrets/<key>/<token>")
                         .ConfigureAwait(false);
                 secretKey = secret.Value;
                 Console.WriteLine(secretKey);
